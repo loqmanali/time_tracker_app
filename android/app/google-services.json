@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "131193723624",
+    "project_id": "timetrackerapp-66781",
+    "storage_bucket": "timetrackerapp-66781.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:131193723624:android:8e313b824da817ac35475d",
+        "android_client_info": {
+          "package_name": "com.loqman.time_tracker_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "131193723624-jgqbjq2ads56fgr5l6vm3r4ru3frulir.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.loqman.time_tracker_app",
+            "certificate_hash": "27b9a5e8fdb1d645f408b387bf81c4c0509e832f"
+          }
+        },
+        {
+          "client_id": "131193723624-an1t5k9lmi4331ou8rrktari5os64ugc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADU7jHd9vutMfh9UV8k_cgB-9C-OqKzkU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "131193723624-an1t5k9lmi4331ou8rrktari5os64ugc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
