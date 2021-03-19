@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:time_tracker_app/app/sign_in/email_sign_in_page.dart';
 import 'package:time_tracker_app/app/sign_in/widget/sign_in_button.dart';
 import 'package:time_tracker_app/app/sign_in/widget/social_sign_in_button.dart';
 import 'package:time_tracker_app/services/auth.dart';
@@ -26,6 +27,23 @@ class SignInPage extends StatelessWidget {
     }
   }
 
+  Future<void> _signInWithFacebook() async {
+    try {
+      await auth.signInWithFacebook();
+    } catch (e) {
+      print('Error: ${e.toString()}');
+    }
+  }
+
+  void _signInWithEmail(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        fullscreenDialog: true,
+        builder: (context) => EmailSignInPage(auth: auth),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,11 +51,11 @@ class SignInPage extends StatelessWidget {
         title: Text('Time Tracker'),
       ),
       backgroundColor: Colors.grey[200],
-      body: _buildContainer(),
+      body: _buildContainer(context),
     );
   }
 
-  Widget _buildContainer() {
+  Widget _buildContainer(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
@@ -62,7 +80,7 @@ class SignInPage extends StatelessWidget {
           ),
           SizedBox(height: 10.0),
           SocialSignInButton(
-            onPressed: () {},
+            onPressed: _signInWithFacebook,
             assetName: 'images/facebook-logo.png',
             text: 'Sign In with Facebook',
             textColor: Colors.white,
@@ -70,7 +88,7 @@ class SignInPage extends StatelessWidget {
           ),
           SizedBox(height: 10.0),
           SignInButton(
-            onPressed: () {},
+            onPressed: () => _signInWithEmail(context),
             text: 'Sign In with Email',
             textColor: Colors.white,
             color: Colors.teal[700],
