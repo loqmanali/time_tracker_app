@@ -8,7 +8,7 @@ enum EmailSignInFormType { signIn, register }
 class EmailSignInForm extends StatefulWidget with EmailAndPasswordValidator {
   final AuthBase auth;
 
-   EmailSignInForm({Key key, @required this.auth}) : super(key: key);
+  EmailSignInForm({Key key, @required this.auth}) : super(key: key);
   @override
   _EmailSignInFormState createState() => _EmailSignInFormState();
 }
@@ -79,11 +79,13 @@ class _EmailSignInFormState extends State<EmailSignInForm> {
   }
 
   TextField _buildPasswordTextField() {
+    bool passwordValid = widget.passwordValidator.isValid(_password);
     return TextField(
       controller: _passwordController,
       focusNode: _passwordFocusNode,
       decoration: InputDecoration(
         labelText: 'Password',
+        errorText: passwordValid ? null : widget.invalidPasswordErrorText,
       ),
       obscureText: true,
       textInputAction: TextInputAction.done,
@@ -93,12 +95,14 @@ class _EmailSignInFormState extends State<EmailSignInForm> {
   }
 
   TextField _buildEmailTextField() {
+    bool emailValid = widget.emailValidator.isValid(_email);
     return TextField(
       controller: _emailController,
       focusNode: _emailFocusNode,
       decoration: InputDecoration(
         labelText: 'Email',
         hintText: 'test@test.com',
+        errorText: emailValid ? null : widget.invalidEmailErrorText,
       ),
       autocorrect: false,
       keyboardType: TextInputType.emailAddress,
